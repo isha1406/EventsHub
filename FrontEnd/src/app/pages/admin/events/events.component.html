@@ -1,0 +1,176 @@
+<div class="row mt-4">
+    <div [ngClass]="isSidePanelVisible ? 'col-8' : 'col-12'">
+        <div class="card">
+            <div class="card-header" style="background: #ce93d8;">
+                <div class="row mt-2">
+                    <div class="col-6 fw-bold">
+                       <h5>ALL EVENTS</h5>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button  class="btn btn-md" id="btn1" (click)="openSidePanel()" *ngIf="isSidePanelVisible==false">New</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" *ngFor="let event of  eventsList">
+                        <div class="card mt-4">
+                            <img class="card-img-top" [src]="event.image" alt="Card image" style="height:300px;">
+                            <div class="card-body">
+                                <h4 class="card-title h-30">{{event.eventName}} 
+                                </h4>
+                                <p class="card-text fw-semibold h-40">
+                                Location: {{event.location}}<br>
+                                Date: {{event.date}}<br>
+                                Time: {{event.time}}<br>
+                                Price: {{event.price}}<br>
+                                Total Tickets: {{event.quantity}}<br>
+                                Description: {{event.description}}<br>
+                                <b>Category: {{event.categories.categoryName}}</b>
+                            </p>
+                            <a class="btn" id="btn1" (click)="onEdit(event)">Edit</a>
+                            <a class="btn btn-danger mx-2" (click)="onDelete(event)">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="col-4" *ngIf="isSidePanelVisible">
+        <div class="card">
+            <div class="card-header" style="background: #ce93d8;">
+                <div class="row">
+                    <div class="col-6 fw-bold" *ngIf="newString==true">
+                       <h5>New Event</h5> 
+                    </div>
+                    <div class="col-6 fw-bold" *ngIf="newString==false">
+                       <h5>Edit Event</h5> 
+                    </div>
+                    <div class="col-6 text-end">
+                        <button class="btn" id="btn1"(click)="closeSidePanel()">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">Event Name </label>
+                        <input type="text" [(ngModel)]="eventsObj.eventName" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Description</label>
+                        <input type="text" [(ngModel)]="eventsObj.description" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Price per Ticket</label>
+                        <input type="text" [(ngModel)]="eventsObj.price" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Total Tickets</label>
+                        <input type="text" [(ngModel)]="eventsObj.quantity" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Location</label>
+                        <input type="text" [(ngModel)]="eventsObj.location" class="form-control">
+                    </div>
+
+
+                    <div class="col-6">
+                        <label for="">Image</label>
+                        <input type="text" [(ngModel)]="eventsObj.image" class="form-control">
+                    </div>
+
+
+                    <div class="col-6">
+                        <label for="">Date</label>
+                        <input type="date" [(ngModel)]="eventsObj.date" class="form-control">
+                    </div>
+
+                    <div class="col-6">
+                        <label for="">Time</label>
+                        <input type="time" [(ngModel)]="eventsObj.time" class="form-control">
+                    </div>
+
+                    <div class="col-6" *ngIf="categoryVisible==true">
+                        <label for="">Category</label>
+                        <select [(ngModel)]="categoryObj.categoryId" [(ngModel)]="categoryObj.categoryName" class="form-select">
+                            <option *ngFor="let cate of categoryList" [value]="cate.categoryId">{{cate.categoryName}}
+                            </option>
+                        </select>
+                    </div>
+
+
+
+                </div>
+                <br>
+                <div class="row pt-2 text-center">
+                    <div class="col-6 text-center">
+                        <button  class="btn" id="btn1" (click)="onReset()" *ngIf="resetVisible==true">Reset</button>
+                    </div>
+
+                    <div class="col-6 text-center">
+                        <button  class="btn" id="btn1" *ngIf="eventsObj.eventId==0" (click)="onSave()">Add Event</button>
+                        <button  class="btn" id="btn1" *ngIf="eventsObj.eventId !== 0" (click)="onUpdate()">Update
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="footer container-fluid ">&copy;<span>2024</span><span> LearnVilla. All rights reserved.</span></div> -->
+
+<!-- <div class="row mt-4">
+ <div class="col-12">
+        <div class="card">
+            <div class="card-header" style="background: #ce93d8;">
+                <div class="row mt-2">
+                    <div class="col-6 fw-bold">
+                       <h5>PAST EVENTS!!</h5>
+                    </div>
+                    <div class="col-6 text-end">
+                        <button  class="btn btn-md" id="btn1" (click)=" getPastEvents()">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" *ngFor="let event of pastEventsList">
+                        <div class="card">
+                            <img class="card-img-top" [src]="event.image" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Event: {{event.eventName}} 
+                                </h4>
+                                <p class="card-text fw-semibold">
+                                Location: {{event.location}}<br>
+                                Date: {{event.date}}<br>
+                                Time: {{event.time}}<br>
+                                Price: {{event.price}}<br>
+                                Total Tickets: {{event.quantity}}<br>
+                                Description: {{event.description}}<br>
+                                <b>Category: {{event.categories.categoryName}}</b>
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+

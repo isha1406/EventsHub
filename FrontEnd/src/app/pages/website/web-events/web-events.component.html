@@ -1,0 +1,88 @@
+<div class="row mt-3">
+    <div class="text-center"> <h4>Upcoming Events!!</h4></div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3" *ngFor="let event of  upcomingEventsList">
+                    <div class="card mt-4">
+                        <img class="card-img-top" [src]="event.image" alt="Card image" style="height:300px;">
+                        <div class="card-body">
+                            <h4 class="card-title text-capitalize m-0">{{event.eventName}}
+                            </h4>
+                            <div class="d-flex gap-2 m-0 fw-semibold">
+                                {{event.date}} |
+                                {{event.time}}
+                            </div>
+                            <p class="text-capitalize m-0">
+                                Location: {{event.location}}</p>
+                                <p class="m-0 py-1" style="font-size: small;">Description: {{event.description}}</p> 
+                            <p class="m-0 py-1" style="font-weight: bold;">Price: {{event.price}} Rs.</p>
+                            <h4 class="m-0 py-1">Available Tickets: {{event.quantity}}</h4>
+                            <br>
+                            
+                            
+                            <!-- <p class="m-0 pb-2">Category: {{event.categories.categoryName}}</p>
+                            <h4 class="card-title text-capitalize m-0">{{event.eventName}}
+                            </h4>
+                            <div class="d-flex gap-2 m-0">
+                                {{event.date}} |
+                                {{event.time}}
+                            </div>
+                            <p class="text-capitalize m-0">
+                                Location: {{event.location}}</p>
+                            <p class="m-0 py-1" style="font-weight: bold;">Price: {{event.price}} Rs.</p>
+                            <p class="m-0 py-1" style="font-size: small;">Description: {{event.description}}</p>
+                            <p class="m-0 pb-2">Category: {{event.categories.categoryName}}</p>  -->
+                            <!-- <p class="card-text fw-semibold h-40">
+                                Location: {{event.location}}<br>
+                                Date: {{event.date}}<br>
+                                Time: {{event.time}}<br>
+                                Price: {{event.price}}<br>
+                                Description: {{event.description}}<br>
+                                Available Tickets: {{event.quantity}}<br>
+                                <b>Category: {{event.categories.categoryName}}</b>
+                            </p> -->
+                        
+                            <a class="btn" id="btn1" (click)="addToCart(event)">Add To Cart</a>
+                            
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row mt-3">
+    <div class="text-center">
+        <h4>Upcoming Events!!</h4>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col" *ngFor="let event of  upcomingEventsList">
+                    <div class="card mt-4" style="width: 300px">
+                        <img class="card-img-top" [src]="event.image" alt="Card image"
+                            style="height:160px; background-position: center; background-size: cover;">
+                        <div class="card-body">
+                            <h4 class="card-title text-capitalize m-0">{{event.eventName}}
+                            </h4>
+                            <div class="d-flex gap-2 m-0">
+                                {{event.date}} |
+                                {{event.time}}
+                            </div>
+                            <p class="text-capitalize m-0">
+                                Location: {{event.location}}</p>
+                            <p class="m-0 py-1" style="font-weight: bold;">Price: {{event.price}} Rs.</p>
+                            <p class="m-0 py-1" style="font-size: small;">Description: {{event.description}}</p> -->
+                            <!-- <p class="m-0 pb-2">Category: {{event.categories.categoryName}}</p>
+
+                            <button class="btn w-100" id="btn1" (click)="addToCart(event)">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

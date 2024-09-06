@@ -1,0 +1,96 @@
+<div class="parent" style="min-height: 100vh;">
+  <div class="container" *ngIf="register==true">
+    <div class="left-section">
+      <!-- <img src="https://img.freepik.com/free-vector/watercolor-garden-party-illustration_23-2149542716.jpg?size=626&ext=jpg&ga=GA1.1.1462797439.1713955124&semt=ais"> -->
+    </div>
+    <div class="right-section">
+      <div class="login-container">
+        <form class="login-form" #RegisterForm="ngForm">
+          <h2 class="login-title"><i class="fas fa-user-circle"></i> SignUp</h2>
+
+          <div class="form-control">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="registerObj.email" placeholder="Email Address" email required>
+            <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty) || isRegisterClicked">
+              <span *ngIf="email.errors?.['required']">Required</span>
+              <span *ngIf="email.errors?.['email']">Please enter a valid email id</span>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <i class="fas fa-user"></i>
+            <input type="text" name="firstName" #firstName="ngModel" [(ngModel)]="registerObj.firstName" placeholder="First Name" required>
+            <div class="text-danger" *ngIf="firstName.invalid && (firstName.touched || firstName.dirty) || isRegisterClicked">
+              <span *ngIf="email.errors?.['required']">Required</span>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <i class="fas fa-user"></i>
+            <input type="text" name="lastName" #lastName="ngModel" [(ngModel)]="registerObj.lastName" placeholder="Last Name" required>
+            <div class="text-danger" *ngIf="lastName.invalid && (lastName.touched || lastName.dirty) || isRegisterClicked">
+              <span *ngIf="lastName.errors?.['required']">Required</span>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <i class="fas fa-user"></i>
+            <input type="text" name="mobileNumber" #mobileNumber="ngModel" [(ngModel)]="registerObj.mobileNumber" placeholder="Mobile Number" minlength="10" maxlength="10" required>
+            <div class="text-danger" *ngIf="mobileNumber.invalid && (mobileNumber.touched || mobileNumber.dirty) || isRegisterClicked">
+              <span *ngIf="mobileNumber.errors?.['required']">Required</span>
+              <span *ngIf="mobileNumber.errors?.['minlength']">Please enter a valid mobile number</span>
+              <span *ngIf="mobileNumber.errors?.['maxlength']">Please enter a valid mobile number</span>
+            </div>
+          </div>
+
+          <div class="form-control">
+            <i class="fas fa-unlock-alt"></i>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="registerObj.password" placeholder="Password" minlength="3" required>
+            <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty) ||   isRegisterClicked">
+              <span *ngIf="password.errors?.['required']">Required</span>
+              <span *ngIf="password.errors?.['minlength']">Password should be of min 3 characters</span>
+            </div>
+          </div>
+
+
+          <button type="submit" class="submit" [disabled]="!RegisterForm.form.valid" (click)="onRegister()">Register</button>
+          <p class="signup">Already have an account ? <button  type="button" (click)="visiblityLogin()"><span>Log In</span> </button>
+          </p>
+        </form>
+      </div>
+
+    </div>
+</div>
+
+    <div class="container" *ngIf="login==true">
+      <div class="left-section"></div>
+      <div class="right-section">
+        <div class="login-container">
+          <form class="login-form" (onsubmit)="onLogin()" #Loginform="ngForm">
+            <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
+            <div class="form-control">
+              <i class="fas fa-user icon"></i>
+              <input type="email" #UserName="ngModel" [(ngModel)]="loginObj.username" name="username" placeholder="Email Address" email required>
+              <div class="text-danger" *ngIf="UserName.invalid && (UserName.touched || UserName.dirty) || isLoginClicked">
+                <span *ngIf="UserName.errors?.['required']">Required</span>
+                <span *ngIf="UserName.errors?.['email']">Please enter a valid email id</span>    
+            </div>
+            </div>
+            <div class="form-control">
+              <i class="fas fa-lock icon"></i>
+              <input type="password" #password="ngModel" [(ngModel)]="loginObj.password" name="password" placeholder="Password" minlength="3" required>
+              <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty) || isLoginClicked">
+                <span *ngIf="password.errors?.['required']">Required</span>
+                <span *ngIf="password.errors?.['minlength']">Password should be of min 3 characters</span>
+            </div>
+            </div>
+            <button type="submit" [disabled]="!Loginform.form.valid" (click)="onLogin()">Login</button>
+            <br>
+            <p class="signup">Don't have an account?<button  type="button" (click)="visiblityRegister()"><span>Register</span>
+              </button>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

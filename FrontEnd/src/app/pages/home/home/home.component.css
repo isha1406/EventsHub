@@ -1,0 +1,25 @@
+.container{
+    margin-top: 60px;
+    margin-left: 30%;
+    width: 100vh;
+}
+
+button {
+    /* width: 100%; */
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: #9c27b0;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+button:hover {
+    background-color:  #ffaa33;
+}

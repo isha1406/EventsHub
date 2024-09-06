@@ -1,0 +1,65 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9c27b0">
+      <div class="container">
+            <button class="btn fs-4 fw-bold" style="color: white" type="button" (click)="eventshub()">EventsHub</button>
+            <a class="navbar-brand mt-1 fw-semibold">
+              <span class="textBlur">Hey, "{{loginUserName}}"</span>
+              <!-- <span class="textBlur" *ngIf="loginbtn==false">Hey, "{{loginUserName}}"</span> -->
+              <!-- <span class="textBlur" *ngIf="loginbtn==true"></span> -->
+            </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0  text-center ">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle fw-semibold text-uppercase me-1" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+                Categories
+              </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let category of categoryList" class="position-relative">
+                    <a class="dropdown-item hand" (click)="navigateToEvents(category.categoryId)">
+                    {{ category.categoryName }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <button class="btn fw-semibold" style="color: white" type="button" (click)="aboutus()">ABOUT US</button>
+              <!-- <a class="nav-link dropdown-toggle fw-semibold text-uppercase me-1" id="navbarDropdown
+                role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white" >
+                Pages
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" routerLink="/aboutus">About Us</a></li>
+                <li><a class="dropdown-item">Contact Us</a></li>
+                <li><a class="dropdown-item">Terms and Conditions</a></li>
+              </ul> -->
+            </li>
+            <li class="nav-item">
+              <button class="btn fw-semibold" style="color: white" type="button" (click)="viewCart()">CART</button>
+              <!-- <button class="btn fw-semibold" style="color: white" type="button"> <a href="/cart">CART</a></button> -->
+              <!-- <a href="/cart">cart</a> -->
+            </li>
+            <li>
+              <!-- <button class="btn fw-semibold" style="color: white" type="button" (click)=login() *ngIf="loginbtn==true">LOGIN</button>
+              <button class="btn fw-semibold" style="color: white" type="button" (click)="logout()" *ngIf="loginbtn==false">LOGOUT</button>  -->
+              <button class="btn fw-semibold" style="color: white" type="button" (click)="logout()">LOGOUT</button>   
+            </li>
+            <li>
+              <button class="btn fw-semibold" style="color: white" type="button" (click)="bookings()">BOOKINGS</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+
+
+  
+
+
+  

@@ -1,0 +1,21 @@
+<div class="container">
+    <div id="about">
+        <div class="box text-center">
+            <br>
+            <h1 class="text-center">🎉Congrats!🎉</h1>
+            <h3> Enjoy Your Event </h3>
+            <div class="container" id="div1">
+                <img src="{{bookingItemObj1.image}}" style="height: 250px; width: 350px;"> 
+                <br>
+                <div class="card-body fw-semibold">
+                <p>Event Name: {{bookingItemObj1.name}}</p>
+                <p>No Of Tickets: {{bookingItemObj1.noOfTickets}}</p>
+                <p>Date: {{bookingItemObj1.date}}</p>
+                <p>Time: {{bookingItemObj1.time}}</p>
+                <p>Amount: Rs.{{bookingItemObj1.bookingEventsPrice}}</p>
+                <button class="btn" type="button" (click)="download()" style="background-color:  #9c27b0; font-weight: 600; color:white;">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

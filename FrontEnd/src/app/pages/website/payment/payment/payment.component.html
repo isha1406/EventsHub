@@ -1,0 +1,59 @@
+<div class="container p-0 mt-5 mx rounded-3 col-6" style="box-shadow: 0px 3px 6px 0px rgb(72, 71, 71);">
+    <form #paymentForm="ngForm">
+      <div class="card px-4" style="font-size: 25px;">
+        <h3 class="h8 py-3 text-center">Payment Details</h3>
+        <div class="row gx-3">
+          <div class="col-10">
+            <div class="d-flex flex-column">
+              <p class="text mb-1">Card holder name</p>
+              <input class="form-control mb-3" name="uname" #uname="ngModel" [(ngModel)]="paymentObj.userName" type="text" placeholder="Name" required>
+              <div class="text-danger" *ngIf="uname.invalid && (uname.touched || uname.dirty) || isButtonClicked">
+                <span *ngIf="uname.errors?.['required']">Required</span>
+            </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="d-flex flex-column">
+              <p class="text mb-1">Card Number</p>
+              <input class="form-control mb-3" name="card" #card="ngModel" [(ngModel)]="paymentObj.cardNumber" type="text" placeholder="xxxx xxxx xxxx xxxx" required minlength="16">
+              <div class="text-danger" *ngIf="card.invalid && (card.touched || card.dirty) || isButtonClicked">
+                <span *ngIf="card.errors?.['required']">Required</span>
+                <span *ngIf="card.errors?.['minlength']">card number should be of 16-digits</span>
+            </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex flex-column">
+              <p class="text mb-1">Expiry</p>
+              <input class="form-control mb-3" name="expiry" #expiry="ngModel" [(ngModel)]="paymentObj.expiry" type="text" placeholder="MM/YYYY" required>
+              <div class="text-danger" *ngIf="expiry.invalid && (expiry.touched || expiry.dirty) || isButtonClicked">
+                <span *ngIf="expiry.errors?.['required']">Required</span>
+               
+            </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex flex-column">
+              <p class="text mb-1">CVV/CVC</p>
+              <input class="form-control mb-3 pt-2 " name="cvv" #cvv="ngModel" [(ngModel)]="paymentObj.cvv" type="password" placeholder="***" required>
+              <div class="text-danger" *ngIf="cvv.invalid && (cvv.touched || cvv.dirty) || isButtonClicked">
+                <span *ngIf="cvv.errors?.['required']">Required</span>
+               
+            </div>
+            </div>
+          </div>
+          <div class="col-12 mb-4">
+            <button class="btn text-center" id="btn1"  [disabled]="!paymentForm.form.valid" (click)="placeOrder()">
+               <span class="ps-3">Pay &#8377; {{cartService.getTotal()}}</span> 
+            </button>
+            &nbsp;
+            <button class="btn btn-danger text-center" (click)="cancelPayment()">
+              <span class="ps-3 text-center">Cancel</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+   
+  </div>
+   

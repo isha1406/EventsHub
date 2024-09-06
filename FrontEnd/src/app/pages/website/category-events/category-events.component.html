@@ -1,0 +1,26 @@
+<div class="row mt-3">
+    <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3" *ngFor="let event of eventsList">
+                        <div class="card">
+                            <img class="card-img-top" [src]="event.image" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title">Event: {{event.eventName}} 
+                                </h4>
+                                <p class="card-text fw-semibold">
+                                Location: {{event.location}}<br>
+                                Date: {{event.date}}<br>
+                                Time: {{event.time}}<br>
+                                Price: {{event.price}}<br>
+                                Description: {{event.description}}<br>
+                                <b>Category: {{event.categories.categoryName}}</b>
+                            </p>
+                                <a class="btn" id="btn1" (click)="addToCart(event)">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

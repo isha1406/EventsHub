@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #9c27b0">
+  <div class="container-fluid">
+    <a class="navbar-brand">EventsHub</a>
+    <div class="collapse navbar-collapse" >
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item ">
+          <a class="nav-link mynavbar" routerLink="/events">Events</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link mynavbar" routerLink="/category">Category</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link mynavbar" routerLink="/bookings">Bookings</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <h6 class="userName" style="color: white">Admin: {{loginUserName}}</h6>
+        <button class="btn" style="color: white" type="button" (click)="logout()">LogOut</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>

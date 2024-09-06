@@ -1,0 +1,37 @@
+
+<div class="row">
+  <div class="col" *ngFor="let data of bookingsList">
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-header" style="background:#ce93d8;">Id:{{data.bookingId}} Status:{{data.bookingStatus}}</h5>
+        <p class="card-title"> Email:
+          {{data.user.email}}</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">BID</th>
+              <th scope="col">Tickets</th>
+              <th scope="col">Price</th>
+              <th scope="col">EventName</th>
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let r of data.bookingItemsList">
+            <tr>          
+              <td>{{r.bookingItemId}}</td>
+              <td>{{r.noOfTickets}}</td>
+              <td>{{r.bookingEventsPrice}}</td>
+              <td>{{r.events.eventName}}</td>
+            </tr>
+          </tbody>
+        </table>
+          <h6  class="card-footer" style="background:#ce93d8;">
+            Total Amount:{{data.totalAmount}}
+            </h6>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
